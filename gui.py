@@ -1,6 +1,12 @@
 import functions
 import FreeSimpleGUI as sg
 import time
+import os
+
+if not os.path.exists("todos.txt"):
+    with open("todos.txt","w") as file:
+        pass
+
 
 sg.theme("Black")
 clock = sg.Text("",key='clock')
@@ -13,6 +19,7 @@ exit_button = sg.Button('Exit')
 
 list_button = sg.Listbox(values = functions.get_todos(),key = 'todos',
                          enable_events=True, size=[45, 10])
+
 edit_button = sg.Button("Edit")
 window = sg.Window("My To-do List",
                    layout = [[clock],
